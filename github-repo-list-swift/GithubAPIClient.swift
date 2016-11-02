@@ -12,7 +12,7 @@ class GithubAPIClient {
     
     class func getRepositories(with completion: @escaping ([[String: Any]]) -> Void) {
         print("running")
-        let urlString = "https://api.github.com/repositories?client_id= fc68a7f2d58e34bf72c5&client_secret=e8f3eb2e34ecc3c5912d79cb8f926836975fe4d0"
+        let urlString = "https://api.github.com/repositories?client_id=\(clientID)&client_secret=\(clientSecret)"
         
         let url = URL(string: "https://api.github.com/repositories?client_id=fc68a7f2d58e34bf72c5&client_secret=e8f3eb2e34ecc3c5912d79cb8f926836975fe4d0")
         
@@ -27,11 +27,11 @@ class GithubAPIClient {
                         
                         let responseJSONArray = try JSONSerialization.jsonObject(with: data, options: []) as! [[String: Any]]
                         
-                        for responseJson in responseJSONArray{
-                            let name = responseJson["full_name"] as! String
-                            
-                            print(name)
-                        }
+//                        for responseJson in responseJSONArray{
+//                            let name = responseJson["full_name"] as! String
+//                            
+//                            print(name)
+//                        }
                         
                         completion(responseJSONArray)
                         
